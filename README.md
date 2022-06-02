@@ -1,7 +1,7 @@
 # Project_Virtual_Keyboard_C64
 Controlling a C64 via virtual keyboard 
 
-## For now this is just a brief overview of the things we will include in this project. Expect changes to come.
+## **_For now this is just a brief overview of the things we will include in this project. Expect changes to come._**
 
 ## Things to include:
 - [x] Programming of a virtual keyboard on the Raspberry PI (preferably with Python)
