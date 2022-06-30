@@ -6,6 +6,21 @@ import tkinter.ttk as ttk
 
 import os
 
+class HoverButton(tk.Button):
+    def __init__(self, master, image_alt, **kw):
+        tk.Button.__init__(self,master=master,**kw)
+        self.defaultBackground = self["foreground"]
+        self.image = self["image"]
+        self.image_alt = image_alt
+        self.bind("<Enter>", self.on_enter)
+        self.bind("<Leave>", self.on_leave)
+
+    def on_enter(self, e):
+        self.config(image = self.image_alt)
+
+    def on_leave(self, e):
+        self.config(image = self.image)
+
 addr = None
 
 if len(sys.argv) < 2:
@@ -34,11 +49,13 @@ print("Connecting to \"{}\" on {}".format(name, host))
 sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 sock.connect((host, port))
 
+#verbindung is aufgebaut
 print("Connected. Type something...")
 
-#aktuellen pfad finden um den bildordner relativ dazu anzusteuern
-#bluetooth kacke, verbindung is aufgebaut
 
+
+
+#aktuellen pfad finden um den bildordner relativ dazu anzusteuern
 filedirectory = os.path.dirname(os.path.abspath(__file__))
 
 #tkinter window erstellen und konfigurieren
@@ -80,7 +97,8 @@ pic_p = tk.PhotoImage(file=f"{filedirectory}/Img/C64_P.png")
 pic_at = tk.PhotoImage(file=f"{filedirectory}/Img/C64_At.png")
 pic_asterisk = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Asterisk.png")
 pic_arrow_up = tk.PhotoImage(file=f"{filedirectory}/Img/C64_ArrowUp.png")
-pic_control = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Restore.png")
+pic_control = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Control.png")
+pic_restore = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Restore.png")
 pic_f3_f4 = tk.PhotoImage(file=f"{filedirectory}/Img/C64_F3.png")
 
 pic_run_stop = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Run_Stop.png")
@@ -117,13 +135,20 @@ pic_cursor_left_right = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Cursor_Left
 pic_f7_f8 = tk.PhotoImage(file=f"{filedirectory}/Img/C64_F7.png")
 
 pic_space = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Space_Optimized.png")
-#pic90 = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Extratasten.png")
+pic_extra = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Extra.png")
 
 #endregion
 
 #region TKinter Buttons erstellen
 
 # Zeile 1 
+
+"""Beispiel hoverbutton:
+btn1 = HoverButton(window, image=pic_arrow_left, image_alt = pic_f1_f2)
+btn1.place(x=1, y=10, width=60, height=60)
+btn1.bind( "<Button>", lambda x: print("test") )
+btn1.configure(background='black')
+btn1.configure(border=0)"""
 
 btn1 = ttk.Label(window, image=pic_arrow_left)
 btn1.place(x=1, y=10, width=60, height=60)
@@ -229,11 +254,11 @@ btn_f1_f2.configure(border=0)
 
 # Zeile 2
 
-# btn21 = ttk.Label(window, image=pic_one1)
-# btn21.place(x=1, y=70, width=120, height=60)
-# btn21.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
-# btn21.configure(background='black')
-# btn21.configure(border=0)
+btn_control = ttk.Label(window, image=pic_control)
+btn_control.place(x=1, y=70, width=120, height=60)
+btn_control.bind( "<Button>", lambda x: print("zu sendende daten hier reinschreiben") )
+btn_control.configure(background='black')
+btn_control.configure(border=0)
 
 btn_q = ttk.Label(window, image=pic_q)
 btn_q.place(x=90, y=70, width=120, height=60)
@@ -314,11 +339,11 @@ btn_arrow_up.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reins
 btn_arrow_up.configure(background='black')
 btn_arrow_up.configure(border=0)
 
-btn_control = ttk.Label(window, image=pic_control)
-btn_control.place(x=870, y=70, width=120, height=60)
-btn_control.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
-btn_control.configure(background='black')
-btn_control.configure(border=0)
+btn_restore = ttk.Label(window, image=pic_restore)
+btn_restore.place(x=870, y=70, width=120, height=60)
+btn_restore.bind( "<Button>", lambda x: print("zu sendende daten hier reinschreiben") )
+btn_restore.configure(background='black')
+btn_restore.configure(border=0)
 
 btn_f3_f4 = ttk.Label(window, image=pic_f3_f4)
 btn_f3_f4.place(x=1020, y=70, width=120, height=60)
@@ -530,12 +555,42 @@ btn_space.bind( "<Button>", lambda x: sock.send("leertaste gedrückt"))
 btn_space.configure(background='black')
 btn_space.configure(border=0)
 
-# Extratasten
-# btn90 = ttk.Label(window, image=pic90)
-# btn90.place(x=780, y=260, width=320, height=74)
-# btn90.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
-# btn90.configure(background='black')
-# btn90.configure(border=0)
+#region Extratasten
+lbl_freeze = tk.Label(window, text="Freeze", background="red",foreground="black",font='Helvetica 10 bold')
+lbl_freeze.place(x=785.5,y=260, width="52", height="20")
+
+btn_freeze = ttk.Label(window, image=pic_extra)
+btn_freeze.place(x=780, y=280)
+btn_freeze.bind( "<Button>", lambda x: print("freeze") )
+btn_freeze.configure(background='black')
+btn_freeze.configure(border=0)
+
+lbl_menu = tk.Label(window, text="Menu", background="red",foreground="black",font='Helvetica 10 bold')
+lbl_menu.place(x=855.5,y=260, width="52", height="20")
+
+btn_menu = ttk.Label(window, image=pic_extra)
+btn_menu.place(x=850, y=280)
+btn_menu.bind( "<Button>", lambda x: print("menu") )
+btn_menu.configure(background='black')
+btn_menu.configure(border=0)
+
+lbl_reset = tk.Label(window, text="Reset", background="red",foreground="black",font='Helvetica 10 bold')
+lbl_reset.place(x=925.5,y=260, width="52", height="20")
+
+btn_reset = ttk.Label(window, image=pic_extra)
+btn_reset.place(x=920, y=280)
+btn_reset.bind( "<Button>", lambda x: print("reset") )
+btn_reset.configure(background='black')
+btn_reset.configure(border=0)
+
+lbl_joystick = tk.Label(window, text="Joystick", background="red",foreground="black",font='Helvetica 10 bold')
+lbl_joystick.place(x=995.5,y=260, width="52", height="20")
+
+btn_joystick = ttk.Label(window, image=pic_extra)
+btn_joystick.place(x=990, y=280)
+btn_joystick.bind( "<Button>", lambda x: print("joy") )
+btn_joystick.configure(background='black')
+btn_joystick.configure(border=0)
 #endregion
 
 window.mainloop()
