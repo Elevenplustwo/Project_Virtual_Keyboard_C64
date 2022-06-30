@@ -146,7 +146,7 @@ pic_extra = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Extra.png")
 """Beispiel hoverbutton:
 btn1 = HoverButton(window, image=pic_arrow_left, image_alt = pic_f1_f2)
 btn1.place(x=1, y=10, width=60, height=60)
-btn1.bind( "<Button>", lambda x: print("test") )
+btn1.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
 btn1.configure(background='black')
 btn1.configure(border=0)"""
 
@@ -256,7 +256,7 @@ btn_f1_f2.configure(border=0)
 
 btn_control = ttk.Label(window, image=pic_control)
 btn_control.place(x=1, y=70, width=120, height=60)
-btn_control.bind( "<Button>", lambda x: print("zu sendende daten hier reinschreiben") )
+btn_control.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
 btn_control.configure(background='black')
 btn_control.configure(border=0)
 
@@ -341,7 +341,7 @@ btn_arrow_up.configure(border=0)
 
 btn_restore = ttk.Label(window, image=pic_restore)
 btn_restore.place(x=870, y=70, width=120, height=60)
-btn_restore.bind( "<Button>", lambda x: print("zu sendende daten hier reinschreiben") )
+btn_restore.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
 btn_restore.configure(background='black')
 btn_restore.configure(border=0)
 
@@ -561,7 +561,7 @@ lbl_freeze.place(x=785.5,y=260, width="52", height="20")
 
 btn_freeze = ttk.Label(window, image=pic_extra)
 btn_freeze.place(x=780, y=280)
-btn_freeze.bind( "<Button>", lambda x: print("freeze") )
+btn_freeze.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
 btn_freeze.configure(background='black')
 btn_freeze.configure(border=0)
 
@@ -570,7 +570,7 @@ lbl_menu.place(x=855.5,y=260, width="52", height="20")
 
 btn_menu = ttk.Label(window, image=pic_extra)
 btn_menu.place(x=850, y=280)
-btn_menu.bind( "<Button>", lambda x: print("menu") )
+btn_menu.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
 btn_menu.configure(background='black')
 btn_menu.configure(border=0)
 
@@ -579,7 +579,7 @@ lbl_reset.place(x=925.5,y=260, width="52", height="20")
 
 btn_reset = ttk.Label(window, image=pic_extra)
 btn_reset.place(x=920, y=280)
-btn_reset.bind( "<Button>", lambda x: print("reset") )
+btn_reset.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
 btn_reset.configure(background='black')
 btn_reset.configure(border=0)
 
@@ -588,7 +588,7 @@ lbl_joystick.place(x=995.5,y=260, width="52", height="20")
 
 btn_joystick = ttk.Label(window, image=pic_extra)
 btn_joystick.place(x=990, y=280)
-btn_joystick.bind( "<Button>", lambda x: print("joy") )
+btn_joystick.bind( "<Button>", lambda x: sock.send("zu sendende daten hier reinschreiben") )
 btn_joystick.configure(background='black')
 btn_joystick.configure(border=0)
 #endregion
