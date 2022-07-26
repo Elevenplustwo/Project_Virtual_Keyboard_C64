@@ -1,4 +1,3 @@
-from re import S
 from PIL import Image, ImageOps
 import glob
 import os
