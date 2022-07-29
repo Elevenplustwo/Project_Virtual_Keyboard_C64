@@ -20,4 +20,4 @@ for filename in glob.glob(r"C:\temp\Img\*.png"):
     picname = os.path.basename(filename)
     img.save(f'C:/temp/Img/bordered_pics/bordered-{picname}')
 
-print("done")
+
