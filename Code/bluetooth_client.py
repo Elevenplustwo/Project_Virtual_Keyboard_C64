@@ -24,6 +24,7 @@ class HoverButton(tk.Button):
         self.locked = not self.locked
         if self.locked: self.config(image = self.images[1])
         else: self.config(image = self.images[0])
+            
 #region Bluetooth
 addr = None
 
@@ -147,12 +148,6 @@ pic_extra = (tk.PhotoImage(file=f"{filedirectory}/Img/C64_Extra.png"),tk.PhotoIm
 #region TKinter Buttons erstellen
 
 # Zeile 1 
-#Beispiel hoverbutton:
-# btn_arrow_left = HoverButton(window, images=pic_arrow_left, image_alt = pic_f1_f2)
-# btn_arrow_left.place(x=1, y=10, width=58, height=58)
-# btn_arrow_left.bind( "<Button>", lambda x: send("") )
-# btn_arrow_left.configure(background='black')
-# btn_arrow_left.configure(border=0)
 
 def send(key):
     print(key, "HIGH")
