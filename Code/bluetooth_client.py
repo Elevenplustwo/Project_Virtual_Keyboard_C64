@@ -585,7 +585,7 @@ btn_f7_f8.configure(border=0)
 
 btn_space = HoverButton(window, images=pic_space)
 btn_space.place(x=173, y=253, width=548, height=58)
-btn_space.bind( "<Button>", lambda x: sock.send("66"))
+btn_space.bind( "<Button>", lambda x: send("66"))
 btn_space.configure(background='black')
 btn_space.configure(border=0)
 
@@ -595,7 +595,7 @@ lbl_freeze.place(x=785.5,y=263, width="52", height="20")
 
 btn_freeze = HoverButton(window, images=pic_extra)
 btn_freeze.place(x=783, y=283,width=58,height=58)
-btn_freeze.bind( "<Button>", lambda x: send("66") )
+btn_freeze.bind( "<Button>", lambda x: send("67") )
 btn_freeze.configure(background='black')
 btn_freeze.configure(border=0)
 
@@ -604,7 +604,7 @@ lbl_menu.place(x=855.5,y=263, width="52", height="20")
 
 btn_menu = HoverButton(window, images=pic_extra)
 btn_menu.place(x=853, y=283,width=58,height=58)
-btn_menu.bind( "<Button>", lambda x: send("67") )
+btn_menu.bind( "<Button>", lambda x: send("68") )
 btn_menu.configure(background='black')
 btn_menu.configure(border=0)
 
@@ -613,7 +613,7 @@ lbl_reset.place(x=925.5,y=263, width="52", height="20")
 
 btn_reset = HoverButton(window, images=pic_extra)
 btn_reset.place(x=923, y=283,width=58,height=58)
-btn_reset.bind( "<Button>", lambda x: send("68") )
+btn_reset.bind( "<Button>", lambda x: send("69") )
 btn_reset.configure(background='black')
 btn_reset.configure(border=0)
 
@@ -622,7 +622,7 @@ lbl_joystick.place(x=995.5,y=263, width="52", height="20")
 
 btn_joystick = HoverButton(window, images=pic_extra)
 btn_joystick.place(x=993, y=283,width=58,height=58)
-btn_joystick.bind( "<Button>", lambda x: send("69") )
+btn_joystick.bind( "<Button>", lambda x: send("70") )
 btn_joystick.configure(background='black')
 btn_joystick.configure(border=0)
 #endregion
