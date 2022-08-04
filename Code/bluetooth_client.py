@@ -143,6 +143,10 @@ pic_f7_f8 = (tk.PhotoImage(file=f"{filedirectory}/Img/C64_F7.png"),tk.PhotoImage
 pic_space = (tk.PhotoImage(file=f"{filedirectory}/Img/C64_Space_Optimized.png"),tk.PhotoImage(file=f"{filedirectory}/bordered_pics/bordered-C64_Space_Optimized.png"))
 pic_extra = (tk.PhotoImage(file=f"{filedirectory}/Img/C64_Extra.png"),tk.PhotoImage(file=f"{filedirectory}/bordered_pics/bordered-C64_Extra.png"))
 
+pic_joystick = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Joystick.png")
+pic_menu = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Menu.png")
+pic_freeze = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Freeze.png")
+pic_reset = tk.PhotoImage(file=f"{filedirectory}/Img/C64_Reset.png")
 #endregion
 
 #region TKinter Buttons erstellen
@@ -590,38 +594,42 @@ btn_space.configure(background='black')
 btn_space.configure(border=0)
 
 #region Extratasten
-lbl_freeze = tk.Label(window, text="Freeze", background="red",foreground="black",font='Helvetica 10 bold')
-lbl_freeze.place(x=785.5,y=263, width="52", height="20")
+lbl_freeze = tk.Label(window, image=pic_freeze)
+lbl_freeze.place(x=785.5,y=263)
+lbl_freeze.configure(border=0)
 
 btn_freeze = HoverButton(window, images=pic_extra)
-btn_freeze.place(x=783, y=283,width=58,height=58)
+btn_freeze.place(x=802, y=292,width=48,height=35)
 btn_freeze.bind( "<Button>", lambda x: send("67") )
 btn_freeze.configure(background='black')
 btn_freeze.configure(border=0)
 
-lbl_menu = tk.Label(window, text="Menu", background="red",foreground="black",font='Helvetica 10 bold')
-lbl_menu.place(x=855.5,y=263, width="52", height="20")
+lbl_menu = tk.Label(window, image=pic_menu)
+lbl_menu.place(x=870.5,y=263)
+lbl_menu.configure(border=0)
 
 btn_menu = HoverButton(window, images=pic_extra)
-btn_menu.place(x=853, y=283,width=58,height=58)
+btn_menu.place(x=873, y=292,width=48,height=35)
 btn_menu.bind( "<Button>", lambda x: send("68") )
 btn_menu.configure(background='black')
 btn_menu.configure(border=0)
 
-lbl_reset = tk.Label(window, text="Reset", background="red",foreground="black",font='Helvetica 10 bold')
-lbl_reset.place(x=925.5,y=263, width="52", height="20")
+lbl_reset = tk.Label(window, image=pic_reset)
+lbl_reset.place(x=933.5,y=263)
+lbl_reset.configure(border=0)
 
 btn_reset = HoverButton(window, images=pic_extra)
-btn_reset.place(x=923, y=283,width=58,height=58)
+btn_reset.place(x=941, y=292,width=48,height=35)
 btn_reset.bind( "<Button>", lambda x: send("69") )
 btn_reset.configure(background='black')
 btn_reset.configure(border=0)
 
-lbl_joystick = tk.Label(window, text="Joystick", background="red",foreground="black",font='Helvetica 10 bold')
-lbl_joystick.place(x=995.5,y=263, width="52", height="20")
+lbl_joystick = tk.Label(window, image=pic_joystick)
+lbl_joystick.place(x=1007,y=263)
+lbl_joystick.configure(border=0)
 
 btn_joystick = HoverButton(window, images=pic_extra)
-btn_joystick.place(x=993, y=283,width=58,height=58)
+btn_joystick.place(x=1011, y=292,width=48,height=35)
 btn_joystick.bind( "<Button>", lambda x: send("70") )
 btn_joystick.configure(background='black')
 btn_joystick.configure(border=0)
