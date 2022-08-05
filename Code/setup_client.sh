@@ -5,8 +5,8 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-sudo apt install -y python -pip #Installiert pip
-sudo apt install -y python3 -pip
+sudo apt install -y python pip #Installiert pip
+sudo apt install -y python3 pip
 
 sudo apt-get install -y git #Installiert git um Dateien von Github zu laden
 
