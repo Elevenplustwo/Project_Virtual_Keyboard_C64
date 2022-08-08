@@ -44,7 +44,7 @@ void setup()
   
   Serial.begin(9600); 
   MyBlue.begin(9600); 
-  Serial.println("Ready to connect\nDefualt password is 1234 or 000"); 
+  Serial.println("Ready to connect\nPassword is 1234"); 
 } 
 
 //MAIN LOOP
@@ -101,7 +101,7 @@ void switch_switch_new (int AX0p, int AX1p, int AX2p, int AY0p, int AY1p, int AY
   
 }
 
-// MERKEN FÜR SPÄTER
+// STRING IN NUMBER UND SENSE SPLITTEN
 void StringSplit(String PayloadParam)
 {
   String Payload = PayloadParam;
