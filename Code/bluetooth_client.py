@@ -3,7 +3,6 @@ import tkinter as tk
 import os
 from time import sleep
 from math import hypot
-from turtle import right
 
 class HoverButton(tk.Button):
     def __init__(self, master, images,**kw):
