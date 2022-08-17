@@ -981,7 +981,7 @@ btn_f5_f6.left = btn_return
 btn_f5_f6.right = btn_run_stop
 btn_f5_f6.down = btn_f7_f8
 
-#line 3
+#line 4
 btn_commodore.up = btn_run_stop
 btn_commodore.left = btn_f7_f8
 btn_commodore.right = btn_shift
@@ -1042,7 +1042,7 @@ btn_slash.left = btn_dot
 btn_slash.right = btn_shift_right
 btn_slash.down = btn_space
 
-btn_shift_right.up = btn_brace_open
+btn_shift_right.up = btn_brace_close
 btn_shift_right.left = btn_slash
 btn_shift_right.right = btn_cursor_up_down
 btn_shift_right.down = btn_freeze
@@ -1066,7 +1066,7 @@ btn_f7_f8.left = btn_cursor_left_right
 btn_f7_f8.right = btn_commodore
 btn_f7_f8.down = btn_joystick
 
-#line 4
+#line 5
 btn_keyCombo.up = btn_shift
 btn_keyCombo.left = btn_joystick
 btn_keyCombo.right = btn_space
