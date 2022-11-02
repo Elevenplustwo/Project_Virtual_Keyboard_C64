@@ -1,10 +1,10 @@
-#from bluetooth import *
+from bluetooth import *
 import tkinter as tk
 import os
 from time import sleep
 import threading
-#import evdev
-#from evdev import InputDevice, categorize, ecodes, KeyEvent
+import evdev
+from evdev import InputDevice, categorize, ecodes, KeyEvent
 
 class HoverButton(tk.Button):
     def __init__(self, master, images,**kw):
@@ -120,35 +120,53 @@ def run_quadstick(s):
         gamepad = evdev.InputDevice('/dev/input/event4')
         return gamepad
     
-    gamepad = connect_device()
+    def connect_dummy():
+        
+        class event():
+            def __init__(self):
+                self.type = 3
+                self.code = 2
+                self.value = 140
+        class gamepad:
+            def __init__(self):
+                self.event = event()
+            def read_loop(self):
+                while True:
+                    yield self.event
+                    sleep(2)
+                    
+        return gamepad()
+    test = True
+    if test: gamepad = connect_dummy()
+    else: gamepad = connect_device()
     for event in gamepad.read_loop(): 
         x = event
         if x.type == 3:
             if x.code == 2 or x.code == 0:
                 if x.value <= 125:
-                    s.send("(71,HIGH)")#Links high
-                    s.send("(72,LOW)") #Rechts low
+                    s.put("(71,HIGH)")#Links high
+                    s.put("(72,LOW)") #Rechts low
                 elif x.value >= 131:
-                    s.send("(71, GPIO.LOW)") #Links Low
-                    s.send("(72, GPIO.HIGH)") #Rechts high
+                    s.put("(71, GPIO.LOW)") #Links Low
+                    s.put("(72, GPIO.HIGH)") #Rechts high
                 else:
-                    s.send("(71, GPIO.LOW)") #Links low              
-                    s.send("(72, GPIO.LOW)") #Rechts low       
+                    s.put("(71, GPIO.LOW)") #Links low              
+                    s.put("(72, GPIO.LOW)") #Rechts low       
             elif x.code == 5 or x.code == 1:
                 if x.value < 125:
-                    s.send("(73, GPIO.HIGH)") #oben high
-                    s.send("(74, GPIO.LOW)") #unten low
+                    s.put("(73, GPIO.HIGH)") #oben high
+                    s.put("(74, GPIO.LOW)") #unten low
                 elif x.value > 131:
-                    s.send("(73, GPIO.LOW)") #oben low
-                    s.send("(74, GPIO.HIGH)") #unten high
+                    s.put("(73, GPIO.LOW)") #oben low
+                    s.put("(74, GPIO.HIGH)") #unten high
                 else:
-                    s.send("(73, GPIO.LOW)") #oben low
-                    s.send("(74, GPIO.LOW)") #unten low 
+                    s.put("(73, GPIO.LOW)") #oben low
+                    s.put("(74, GPIO.LOW)") #unten low 
         elif x.type == 1 and x.code == 304:
                 if x.value == 1:
-                    s.send("(75, GPIO.HIGH)") #Feuer high 
+                    s.put("(75, GPIO.HIGH)") #Feuer high 
                 elif x.value == 0:
-                    s.send("(75, GPIO.LOW)") #Feuer low 
+                    s.put("(75, GPIO.LOW)") #Feuer low 
 
 def run_keyboard(filedirectory, s):
     def load_images():
@@ -238,24 +256,24 @@ def run_keyboard(filedirectory, s):
     def send(event, key):
         if btn_keyCombo.locked:
             if not(event.widget,f"({key},LOW)") in keyCombo_list:
-                s.send(f"({key},HIGH)")
+                s.put(f"({key},HIGH)")
                 sleep(0.01)
                 keyCombo_list.append((event.widget,f"({key},LOW)"))
                 event.widget.lock_unlock()
         else: 
-            s.send(f"({key},HIGH)")
+            s.put(f"({key},HIGH)")
             sleep(0.01)
-            s.send(f"({key},LOW)")
+            s.put(f"({key},LOW)")
 
         if btn_shift.locked:
             btn_shift.lock_unlock()
             btn_shift_right.lock_unlock()
-            s.send("(741,LOW)")
+            s.put("(741,LOW)")
             
     def shift_lock(event):
         btn_shift_lock.locked = not btn_shift_lock.locked
-        if btn_shift_lock.locked: s.send("(35,HIGH)")
-        else: s.send("(35,LOW)")
+        if btn_shift_lock.locked: s.put("(35,HIGH)")
+        else: s.put("(35,LOW)")
         
     def shift(event):
         if event.widget.name == "shift":
@@ -264,19 +282,19 @@ def run_keyboard(filedirectory, s):
         elif event.widget.name == "shift_right":
             btn_shift_right.locked = not btn_shift_right.locked
             btn_shift.lock_unlock()
-        if btn_shift.locked: s.send("(741,HIGH)")
-        else: s.send("(741,LOW)")   
+        if btn_shift.locked: s.put("(741,HIGH)")
+        else: s.put("(741,LOW)")   
     
     def commodore(event):
         btn_commodore.locked = not btn_commodore.locked
-        if btn_commodore.locked: s.send("(740,HIGH)")
-        else: s.send("(740,LOW)")
+        if btn_commodore.locked: s.put("(740,HIGH)")
+        else: s.put("(740,LOW)")
     
     def keyCombo(event):
         btn_keyCombo.locked = not btn_keyCombo.locked
         if not btn_keyCombo.locked:
             for i in keyCombo_list:
-                s.send(i[1])
+                s.put(i[1])
                 i[0].lock_unlock()
             keyCombo_list.clear()
     
@@ -1124,6 +1142,7 @@ def run_keyboard(filedirectory, s):
 
     #endregion
     window.mainloop()
+from queue import Queue
 
 def main():
     filedirectory = os.path.dirname(os.path.abspath(__file__))
@@ -1140,14 +1159,20 @@ def main():
                 print(s)
             def close():
                 print("verbindung geschlossen")
-                
-    ssid="00:21:13:05:A1:D3"
+     
+    ssid = "DC:A6:32:47:93:A1" 
+    #ssid="00:21:13:05:A1:D3"
     s.connect((ssid,1))
+    data_queue = Queue()
+    #run_quadstick(data_queue)
     
-    keyboard_thread = threading.Thread(group=None, target=run_keyboard,args=(filedirectory,s),daemon=False)
+    keyboard_thread = threading.Thread(group=None, target=run_keyboard,args=(filedirectory,data_queue),daemon=False)
     keyboard_thread.start()
-    quadstick_thread = threading.Thread(group=None, target=run_quadstick,args=(s,),daemon=False)
+    quadstick_thread = threading.Thread(group=None, target=run_quadstick,args=(data_queue,),daemon=False)
     quadstick_thread.start()
+    while True:
+        if not data_queue.empty():
+            s.send(data_queue.get())
     """class threading.Thread(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)
         This constructor should always be called with keyword arguments. Arguments are:
 
