@@ -1,0 +1,76 @@
+Button:			Send Data:		ButtonMap [C]
+btn_arrow_left		1	  		{1, 1, 0, 1, 1, 1 },   //BTN ARROW LEFT
+btn_one			2	  		{1, 1, 1, 1, 1, 1 },   //BTN ONE  
+btn_two			3	  		{0, 0, 0, 1, 1, 1 },   //BTN TWO
+btn_three 		4	  		{1, 1, 1, 1, 1, 0 },   //BTN THREE  
+btn_four		5	  		{0, 0, 0, 1, 1, 0 },   //BTN FOUR
+btn_five		6	  		{1, 1, 1, 1, 0, 1 },   //BTN FIVE
+btn_six			7	  		{0, 0, 0, 1, 0, 1 },   //BTN SIX
+btn_seven		8	  		{1, 1, 1, 1, 0, 0 },   //BTN SEVEN
+btn_eight		9	  		{0, 0, 0, 1, 0, 0 },   //BTN EIGHT
+btn_nine		10	  		{1, 1, 1, 0, 1, 1 },   //BTN NINE
+btn_zero		11	  		{0, 0, 0, 0, 1, 1 },   //BTN ZERO
+btn_plus		12	  		{1, 1, 1, 0, 1, 0 },   //BTN PLUS
+btn_minus		13	  		{0, 0, 0, 0, 1, 0 },   //BTN MINUS
+btn_pound		14	  		{1, 1, 1, 0, 0, 1 },   //BTN POUND
+btn_home		15	  		{0, 0, 0, 0, 0, 1 },   //BTN HOME
+btn_del			16	  		{1, 1, 1, 0, 0, 0 },   //BTN DEL
+btn_f1_f2		17	  		{0, 1, 1, 0, 0, 0 },   //BTN F1 F2
+btn_control		18	  		{1, 0, 1, 1, 1, 1 },   //BTN CNTRL
+btn_q			19	  		{0, 0, 1, 1, 1, 1 },   //BTN Q
+btn_w			20	  		{1, 1, 0, 1, 1, 0 },   //BTN W
+btn_e			21	  		{0, 0, 1, 1, 1, 0 },   //BTN E
+btn_r			22	  		{1, 1, 0, 1, 0, 1 },   //BTN R
+btn_t			23	  		{0, 0, 1, 1, 0, 1 },   //BTN T
+btn_y			24	  		{1, 1, 0, 1, 0, 0 },   //BTN Y
+btn_u			25	  		{0, 0, 1, 1, 0, 0 },   //BTN U
+btn_i			26	  		{1, 1, 0, 0, 1, 1 },   //BTN I
+btn_o			27	  		{0, 0, 1, 0, 1, 1 },   //BTN O
+btn_p			28	  		{1, 1, 0, 0, 1, 0 },   //BTN P
+btn_at			29	  		{0, 0, 1, 0, 1, 0 },   //BTN AT
+btn_asterisk		30	  		{1, 1, 0, 0, 0, 1 },   //BTN ASTERISK
+btn_arrow_up		31	  		{0, 0, 1, 0, 0, 1 },   //BTN ARROW UP
+btn_restore		32	  		{0, 0, 0, 0, 0, 0 },   //--------------- RESTORE
+btn_f3_f4		33	  		{0, 1, 0, 0, 0, 0 },   //BTN F3 F4
+btn_run_stop		34	  		{1, 0, 0, 1, 1, 1 },   //BTN RUN STOP
+btn_shift_lock		35(shift_lock)	  	{0, 0, 0, 0, 0, 0 },   //--------------- SHIFT LOCK
+btn_a			36	  		{1, 0, 1, 1, 1, 0 },   //BTN A
+btn_s			37	  		{0, 1, 0, 1, 1, 0 },   //BTN S
+btn_d			38	  		{1, 0, 1, 1, 0, 1 },   //BTN D
+btn_f			39	  		{0, 1, 0, 1, 0, 1 },   //BTN F
+btn_g			40	  		{1, 0, 1, 1, 0, 0 },   //BTN G
+btn_h			41	  		{0, 1, 0, 1, 0, 0 },   //BTN H
+btn_j			42	  		{1, 0, 1, 0, 1, 1 },   //BTN J
+btn_k			43	  		{0, 1, 0, 0, 1, 1 },   //BTN K
+btn_l			44	  		{1, 0, 1, 0, 1, 0 },   //BTN L
+btn_brace_open		45	  		{0, 1, 0, 0, 1, 0 },   //-------------- BRACE OPEN
+btn_brace_close		46	  		{1, 0, 1, 0, 0, 1 },   //-------------- BRACE CLOSE
+btn_equal		47	  		{0, 1, 0, 0, 0, 1 },   //BTN EQUAL
+btn_return		48	 		{1, 1, 0, 0, 0, 0 },   //BTN RETURN
+btn_f5_f6		49	  		{0, 0, 1, 0, 0, 0 },   //BTN F5 F6
+btn_commodore		50(commodore)	  	{0, 1, 0, 1, 1, 1 },   //BTN COMMORDORE
+btn_shift		51(shift)	  	{1, 0, 0, 1, 1, 0 },   //BTN SHIFT
+btn_z			52	  		{0, 1, 1, 1, 1, 0 },   //BTN Z
+btn_x			53	  		{1, 0, 0, 1, 0, 1 },   //BTN X
+btn_c			54	  		{0, 1, 1, 1, 0, 1 },   //BTN C
+btn_v			55	  		{1, 0, 0, 1, 0, 0 },   //BTN V
+btn_b			56	  		{0, 1, 1, 1, 0, 0 },   //BTN B
+btn_n			57	  		{1, 0, 0, 0, 1, 1 },   //BTN N
+btn_m			58	  		{0, 1, 1, 0, 1, 1 },   //BTN M
+btn_comma		59	  		{1, 0, 0, 0, 1, 0 },   //BTN COMMA
+btn_dot			60	  		{0, 1, 1, 0, 1, 0 },   //BTN DOT
+btn_slash		61	  		{1, 0, 0, 0, 0, 1 },   //BTN SLASH
+btn_shift_right		62(shift rechts)	{0, 1, 1, 0, 0, 1 },   //BTN SHIFT RIGHT
+btn_cursor_up_down	63	  		{1, 0, 0, 0, 0, 0 },   //BTN CURSOR UP DOWN
+btn_cursor_left_right	64	  		{1, 0, 1, 0, 0, 0 },   //BTN CURSOR LEFT RIGHT
+btn_f7_f8		65	  		{0, 0, 0, 0, 0, 0 },   //BTN F7 F8
+btn_space		66	  		{0, 1, 1, 1, 1, 1 },   //BTN SPACE  
+btn_freeze		67	
+btn_menu		68	
+btn_reset		69	
+btn_joystick		70	
+joystick_left		71	
+joystick_right		72	
+joystick_up	73	
+joystick_down	74	
+joystick_fire	75	
