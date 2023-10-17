@@ -1,5 +1,5 @@
 #include <SoftwareSerial.h> 
-SoftwareSerial MyBlue(14, 15); // RX | TX 
+SoftwareSerial MyBlue(0, 1); // RX | TX 
 boolean rec = false;
 String resulttext = "";
 boolean pinmode = 1;
