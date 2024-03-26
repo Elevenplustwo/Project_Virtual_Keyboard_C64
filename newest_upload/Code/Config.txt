@@ -1,0 +1,7 @@
+########################## KONFIGURATIONS-DATEI FÜR VIRTUAL KEYBOARD C64 ##########################
+
+Value Links  (<=): 115
+Value Rechts (=>): 135
+
+Value Oben   (<=): 115
+Value Unten  (=>): 135
